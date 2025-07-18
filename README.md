@@ -2,12 +2,25 @@
 
 Homebrew tap for get-repo - a CLI tool for managing git repositories across VCS providers.
 
-## Installation
+## Installation Options
+
+### Option 1: Build from source (recommended)
 
 ```bash
 brew tap dardevelin/get-repo
 brew install get-repo
 ```
+
+This builds get-repo from source on your machine.
+
+### Option 2: Pre-built signed binary (macOS only)
+
+```bash
+brew tap dardevelin/get-repo
+brew install --cask get-repo-binary
+```
+
+This installs the pre-built, signed and notarized macOS binary.
 
 ## Usage
 
