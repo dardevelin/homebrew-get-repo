@@ -1,8 +1,8 @@
 class GetRepo < Formula
   desc "CLI tool for managing git repositories across VCS providers"
   homepage "https://github.com/dardevelin/get-repo"
-  url "https://github.com/dardevelin/get-repo/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "39bc85acce798a3d8ef67b4ed40aa21fee19624e9cf5bf70e4e6b9e36ad5e413"
+  url "https://github.com/dardevelin/get-repo/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "4c583de7bbf0616d78b4edaae50489c5113bcd81a1545f303358de05d1b0b9f1"
   license "MIT"
   head "https://github.com/dardevelin/get-repo.git", branch: "main"
 
