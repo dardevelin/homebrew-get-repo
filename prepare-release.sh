@@ -12,7 +12,7 @@ fi
 
 VERSION=$1
 BINARY_PATH=$2
-BINARY_NAME="get-repo-v${VERSION}-macos-universal-signed.zip"
+BINARY_NAME="get-repo-v${VERSION}-macos-arm64-signed.zip"
 
 echo "Preparing release for get-repo v${VERSION}..."
 
