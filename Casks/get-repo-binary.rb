@@ -13,26 +13,22 @@ cask "get-repo-binary" do
 
   # Generate completions on install
   postflight do
-    system_command "#{staged_path}/get-repo",
-                   args: ["completion", "bash"],
-                   print_stdout: false,
-                   must_succeed: true,
-                   sudo: false,
-                   pipe_to: "#{HOMEBREW_PREFIX}/etc/bash_completion.d/get-repo"
-
-    system_command "#{staged_path}/get-repo",
-                   args: ["completion", "zsh"],
-                   print_stdout: false,
-                   must_succeed: true,
-                   sudo: false,
-                   pipe_to: "#{HOMEBREW_PREFIX}/share/zsh/site-functions/_get-repo"
-
-    system_command "#{staged_path}/get-repo",
-                   args: ["completion", "fish"],
-                   print_stdout: false,
-                   must_succeed: true,
-                   sudo: false,
-                   pipe_to: "#{HOMEBREW_PREFIX}/share/fish/vendor_completions.d/get-repo.fish"
+    # Ensure completion directories exist
+    FileUtils.mkdir_p "#{HOMEBREW_PREFIX}/etc/bash_completion.d"
+    FileUtils.mkdir_p "#{HOMEBREW_PREFIX}/share/zsh/site-functions"
+    FileUtils.mkdir_p "#{HOMEBREW_PREFIX}/share/fish/vendor_completions.d"
+    
+    # Generate bash completion
+    bash_completion = `"#{staged_path}/get-repo" completion bash`
+    File.write("#{HOMEBREW_PREFIX}/etc/bash_completion.d/get-repo", bash_completion)
+    
+    # Generate zsh completion
+    zsh_completion = `"#{staged_path}/get-repo" completion zsh`
+    File.write("#{HOMEBREW_PREFIX}/share/zsh/site-functions/_get-repo", zsh_completion)
+    
+    # Generate fish completion
+    fish_completion = `"#{staged_path}/get-repo" completion fish`
+    File.write("#{HOMEBREW_PREFIX}/share/fish/vendor_completions.d/get-repo.fish", fish_completion)
   end
 
   # Clean up completions on uninstall
