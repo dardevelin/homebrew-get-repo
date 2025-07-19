@@ -1,8 +1,8 @@
 class GetRepo < Formula
   desc "CLI tool for managing git repositories across VCS providers"
   homepage "https://github.com/dardevelin/get-repo"
-  url "https://github.com/dardevelin/get-repo/archive/refs/tags/v1.0.1.tar.gz"
-  sha256 "db47b5cd22ecce4170d13393fadff766245847fbb250f84f67de051cf77d6beb"
+  url "https://github.com/dardevelin/get-repo/archive/refs/tags/v1.0.2.tar.gz"
+  sha256 "6e4fe47172c66ca200042ee227175b32a90044cdee98624d3553a4d0a91d3e88"
   license "MIT"
   head "https://github.com/dardevelin/get-repo.git", branch: "main"
 
@@ -28,11 +28,14 @@ class GetRepo < Formula
     
     output = Utils.safe_popen_read(bin/"get-repo", "completion", "fish")
     (fish_completion/"get-repo.fish").write output
+    
+    # Install man page
+    man1.install "docs/get-repo.1"
   end
 
   test do
     # Test version output
-    assert_match "get-repo version 1.0.1", shell_output("#{bin}/get-repo --version")
+    assert_match "get-repo version 1.0.2", shell_output("#{bin}/get-repo --version")
     
     # Test help output
     assert_match "USAGE:", shell_output("#{bin}/get-repo --help")
