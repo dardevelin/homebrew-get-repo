@@ -28,6 +28,9 @@ class GetRepo < Formula
     
     output = Utils.safe_popen_read(bin/"get-repo", "completion", "fish")
     (fish_completion/"get-repo.fish").write output
+    
+    # Install man page
+    man1.install "docs/get-repo.1"
   end
 
   test do
