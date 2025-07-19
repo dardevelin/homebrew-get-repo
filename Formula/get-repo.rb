@@ -1,10 +1,15 @@
 class GetRepo < Formula
   desc "CLI tool for managing git repositories across VCS providers"
   homepage "https://github.com/dardevelin/get-repo"
-  url "https://github.com/dardevelin/get-repo/archive/refs/tags/v0.1.1.tar.gz"
-  sha256 "4c583de7bbf0616d78b4edaae50489c5113bcd81a1545f303358de05d1b0b9f1"
+  url "https://github.com/dardevelin/get-repo/archive/refs/tags/v1.0.0.tar.gz"
+  sha256 "84c5484489af7ae9f3c7934324bdb549d15ede073f5bb9ce503ce90c27e96b18"
   license "MIT"
   head "https://github.com/dardevelin/get-repo.git", branch: "main"
+
+  bottle do
+    sha256 cellar: :any_skip_relocation, arm64_sonoma: "45e9053a08238b16e107e4e60b00c5700827747218581a518229cb0ca46a732a"
+    sha256 cellar: :any_skip_relocation, ventura:      "e71c6a260e3b2e1220c62a58463139ac1be1a5601b20bd93118b6392a12e6d33"
+  end
 
   depends_on "go" => :build
   depends_on "git"
@@ -25,7 +30,7 @@ class GetRepo < Formula
 
   test do
     # Test version output
-    assert_match "get-repo", shell_output("#{bin}/get-repo --version", 2)
+    assert_match "get-repo version 1.0.0", shell_output("#{bin}/get-repo --version")
     
     # Test help output
     assert_match "USAGE:", shell_output("#{bin}/get-repo --help")
