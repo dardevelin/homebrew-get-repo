@@ -13,9 +13,9 @@ class GetRepo < Formula
   def install
     ldflags = %W[
       -s -w
-      -X github.com/dardevelin/get-repo/pkg/version.Version=#{version}
-      -X github.com/dardevelin/get-repo/pkg/version.GitCommit=homebrew
-      -X github.com/dardevelin/get-repo/pkg/version.BuildDate=#{Time.now.utc.strftime("%Y-%m-%d")}
+      -X get-repo/pkg/version.Version=#{version}
+      -X get-repo/pkg/version.GitCommit=homebrew
+      -X get-repo/pkg/version.BuildDate=#{Time.now.utc.strftime("%Y-%m-%d")}
     ]
     system "go", "build", *std_go_args(ldflags: ldflags), "-o", bin/"get-repo", "./cmd/get-repo"
     
