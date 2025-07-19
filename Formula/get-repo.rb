@@ -6,16 +6,18 @@ class GetRepo < Formula
   license "MIT"
   head "https://github.com/dardevelin/get-repo.git", branch: "main"
 
-  bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sonoma: "45e9053a08238b16e107e4e60b00c5700827747218581a518229cb0ca46a732a"
-    sha256 cellar: :any_skip_relocation, ventura:      "e71c6a260e3b2e1220c62a58463139ac1be1a5601b20bd93118b6392a12e6d33"
-  end
 
   depends_on "go" => :build
   depends_on "git"
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w"), "-o", bin/"get-repo", "./cmd/get-repo"
+    ldflags = %W[
+      -s -w
+      -X github.com/dardevelin/get-repo/pkg/version.Version=#{version}
+      -X github.com/dardevelin/get-repo/pkg/version.GitCommit=homebrew
+      -X github.com/dardevelin/get-repo/pkg/version.BuildDate=#{Time.now.utc.strftime("%Y-%m-%d")}
+    ]
+    system "go", "build", *std_go_args(ldflags: ldflags), "-o", bin/"get-repo", "./cmd/get-repo"
     
     # Generate and install shell completions
     output = Utils.safe_popen_read(bin/"get-repo", "completion", "bash")
