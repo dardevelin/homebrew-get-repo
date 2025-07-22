@@ -1,8 +1,8 @@
 cask "get-repo-binary" do
-  version "0.1.0"
-  sha256 "4118feb4aaa51c61619b783c7af805771e7b0f95fa70ff97f17e089d550857ca"
+  version "1.0.3"
+  sha256 "7e685c98eadd6391975c18643daab85c2e9bf8b90759bcd443ff8f120d244d5f"
 
-  url "https://github.com/dardevelin/get-repo/releases/download/v#{version}/get-repo-v#{version}-macos-arm64-signed.zip"
+  url "https://github.com/dardevelin/get-repo/releases/download/v#{version}/get-repo-v#{version}-darwin-arm64.tar.gz"
   name "get-repo"
   desc "Pre-built binary of get-repo - CLI tool for managing git repositories (Apple Silicon only)"
   homepage "https://github.com/dardevelin/get-repo"
