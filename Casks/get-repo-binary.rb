@@ -1,6 +1,6 @@
 cask "get-repo-binary" do
-  version "1.0.3"
-  sha256 "7e685c98eadd6391975c18643daab85c2e9bf8b90759bcd443ff8f120d244d5f"
+  version "1.0.4"
+  sha256 "ba9deba856c66f56cb6447f2eb5a6441ff573fc910c06ebd33eebaf4a0ac70ac"
 
   url "https://github.com/dardevelin/get-repo/releases/download/v#{version}/get-repo-v#{version}-darwin-arm64.tar.gz"
   name "get-repo"

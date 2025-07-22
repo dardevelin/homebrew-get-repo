@@ -1,8 +1,8 @@
 class GetRepo < Formula
   desc "CLI tool for managing git repositories across VCS providers"
   homepage "https://github.com/dardevelin/get-repo"
-  url "https://github.com/dardevelin/get-repo/archive/refs/tags/v1.0.3.tar.gz"
-  sha256 "41b455da6aa1da8a5ab7e1860afa0fd7d693b49b64658ecab2d272ab727c0a55"
+  url "https://github.com/dardevelin/get-repo/archive/refs/tags/v1.0.4.tar.gz"
+  sha256 "aa4087067b84b04c78aa42439a107082d8599a992929192085162283316e367c"
   license "MIT"
   head "https://github.com/dardevelin/get-repo.git", branch: "main"
 
@@ -35,7 +35,7 @@ class GetRepo < Formula
 
   test do
     # Test version output
-    assert_match "get-repo 1.0.3", shell_output("#{bin}/get-repo --version")
+    assert_match "get-repo 1.0.4", shell_output("#{bin}/get-repo --version")
     
     # Test help output
     assert_match "USAGE:", shell_output("#{bin}/get-repo --help")
